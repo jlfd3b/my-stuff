@@ -1,0 +1,76 @@
+//send frames 
+// Required libraries
+#include "variant.h"
+#include <due_can.h>
+
+//Leave defined if you use native port, comment if using programming port
+#define Serial SerialUSB
+
+void setup()
+{
+
+  Serial.begin(115200);
+  
+  // Initialize CAN0 and CAN1, Set the proper baud rates here
+  Can0.begin(CAN_BPS_500K);
+  Can1.begin(CAN_BPS_500K);
+  
+  Can0.watchFor();  
+}
+
+void sends_E0_5B()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E0;
+	outgoing.extended = false;
+	outgoing.priority = 1; //0-15 lower is higher priority
+	
+	outgoing.data.s0 = 0x0322;
+    outgoing.data.byte[2] = 0x00;
+	outgoing.data.byte[3] = 0x5B;
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+}
+
+
+void sends_E1_AE()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E1;
+	outgoing.extended = false;
+	outgoing.priority = 1; //0-15 lower is higher priority
+	
+	outgoing.data.s0 = 0x07AE;
+    outgoing.data.byte[2] = 0x31;
+	outgoing.data.byte[3] = 0x06;
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+}
+
+
+void sends_E1_3E()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E1;
+	outgoing.extended = false;
+	outgoing.priority = 1; //0-15 lower is higher priority
+	
+	outgoing.data.s0 = 0x013E;
+    outgoing.data.byte[2] = 0x00;
+	outgoing.data.byte[3] = 0x00;
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+}
+
+
+void loop(){
+  
+  sends_E0_5B();
+  
+  delay(2500);
+  
+  
+     sends_E1_AE();   
+     sends_E1_3E();
+  }
+}
