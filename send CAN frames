@@ -8,12 +8,9 @@
 
 void setup()
 {
-
-  Serial.begin(115200);
   
   // Initialize CAN0 and CAN1, Set the proper baud rates here
   Can0.begin(CAN_BPS_500K);
-  Can1.begin(CAN_BPS_500K);
   
   Can0.watchFor();  
 }
@@ -22,7 +19,7 @@ void sends_E0_5B()
 {
 	CAN_FRAME outgoing;
 	outgoing.id = 0x7E0;
-	outgoing.extended = false;
+	outgoing.extended = 0;
 	outgoing.priority = 1; //0-15 lower is higher priority
 	
 	outgoing.data.s0 = 0x0322;
@@ -37,7 +34,7 @@ void sends_E1_AE()
 {
 	CAN_FRAME outgoing;
 	outgoing.id = 0x7E1;
-	outgoing.extended = false;
+	outgoing.extended = 0;
 	outgoing.priority = 1; //0-15 lower is higher priority
 	
 	outgoing.data.s0 = 0x07AE;
@@ -52,7 +49,7 @@ void sends_E1_3E()
 {
 	CAN_FRAME outgoing;
 	outgoing.id = 0x7E1;
-	outgoing.extended = false;
+	outgoing.extended = 0;
 	outgoing.priority = 1; //0-15 lower is higher priority
 	
 	outgoing.data.s0 = 0x013E;
