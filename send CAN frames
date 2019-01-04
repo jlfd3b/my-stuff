@@ -32,6 +32,9 @@ void sends_E0_5B()
 	
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
+	
+	delay(100)
+
 }
 
 
@@ -50,6 +53,8 @@ void sends_E1_AE()
 	outgoing.data.low = 07AE3106
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
+	
+	delay(100)
 }
 
 
@@ -68,6 +73,9 @@ void sends_E1_3E()
 	outgoing.data.low = 013E0000
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
+	
+	delay(100)
+
 }
 
 
