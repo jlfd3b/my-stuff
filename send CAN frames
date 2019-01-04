@@ -79,7 +79,8 @@ void sends_E1_3E()
 }
 
 
-void loop(){
+void loop()
+{
   
   sends_E0_5B();
   
@@ -89,4 +90,4 @@ void loop(){
      sends_E1_AE();   
      sends_E1_3E();
   }
-}
+
