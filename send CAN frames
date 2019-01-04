@@ -9,6 +9,9 @@
 void setup()
 {
   
+  pinMode(5, OUTPUT);  // setup led
+
+  
   // Initialize CAN0 and CAN1, Set the proper baud rates here
   Can0.begin(CAN_BPS_500K);
   
@@ -84,10 +87,16 @@ void loop()
   
   sends_E0_5B();
   
-  delay(2500);
+  delay(1500);
   
   
      sends_E1_AE();   
      sends_E1_3E();
+     
+     digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
+ delay(1000);                       // wait for a second
+ digitalWrite(5, LOW);    // turn the LED off by making the voltage LOW
+     
+     
   }
 
