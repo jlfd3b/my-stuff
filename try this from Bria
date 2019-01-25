@@ -1,0 +1,101 @@
+//send frames 
+// Required libraries
+#include "variant.h"
+#include <due_can.h>
+
+//Leave defined if you use native port, comment if using programming port
+#define Serial SerialUSB
+
+void setup()
+{
+  
+  pinMode(5, OUTPUT);  // setup led
+
+  
+  // Initialize CAN0 and CAN1, Set the proper baud rates here
+  Can0.begin(CAN_BPS_500K);
+  
+}
+
+void sends_E0_5B()
+{
+	CAN_FRAME outgoing;
+	
+	outgoing.id = 0x7E0;
+	outgoing.length = 8
+	outgoing.extended = 0;
+	outgoing.priority = 0; //0-15 lower is higher priority
+	
+	//  outgoing.data.s0 = 0x0322;  
+    //  outgoing.data.byte[2] = 0x00;   
+	//   outgoing.data.byte[3] = 0x5B;  
+	
+	outgoing.data.low = 0x0322005B;
+
+	
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+	
+	delay(100)
+
+}
+
+
+void sends_E1_AE()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E1;
+	outgoing.length = 8
+	outgoing.extended = 0;
+	outgoing.priority = 0; //0-15 lower is higher priority
+	
+	//  outgoing.data.s0 = 0x07AE;
+    //    outgoing.data.byte[2] = 0x31;
+	//  outgoing.data.byte[3] = 0x06;
+	
+	outgoing.data.low = 07AE3106
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+	
+	delay(100)
+}
+
+
+void sends_E1_3E()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E1;
+	outgoing.length = 8
+	outgoing.extended = 0;
+	outgoing.priority = 0; //0-15 lower is higher priority
+	
+	//  outgoing.data.s0 = 0x013E;
+    //   outgoing.data.byte[2] = 0x00;
+	//  outgoing.data.byte[3] = 0x00;
+	
+	outgoing.data.low = 013E0000
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+	
+	delay(100)
+
+}
+
+
+void loop()
+{
+  
+  sends_E0_5B();
+  
+  delay(1500);
+  
+  
+     sends_E1_AE();   
+     sends_E1_3E();
+     
+     digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
+ delay(1000);                       // wait for a second
+ digitalWrite(5, LOW);    // turn the LED off by making the voltage LOW
+     
+     
+  }
