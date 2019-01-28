@@ -17,35 +17,55 @@ void setup()
   
 }
 
-void sends_E0_5B()
+void sends_02_AE()
 {
 	CAN_FRAME outgoing;
 	
-	outgoing.id = 0x7E0;
-	outgoing.length = 8
+	outgoing.id = 0x7E1;
+	outgoing.length = 8;
 	outgoing.extended = 0;
 	outgoing.priority = 0; //0-15 lower is higher priority
 	
-	//  outgoing.data.s0 = 0x0322;  
+	//  outgoing.data.s0 = 0x02AE;  
     //  outgoing.data.byte[2] = 0x00;   
-	//   outgoing.data.byte[3] = 0x5B;  
+	//   outgoing.data.byte[3] = 0x00;  
 	
-	outgoing.data.low = 0x0322005B;
+	outgoing.data.low = 0x02AE0000;
 
 	
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
 	
-	delay(100)
+	delay(100);
 
 }
 
 
-void sends_E1_AE()
+void sends_31_05()
 {
 	CAN_FRAME outgoing;
 	outgoing.id = 0x7E1;
-	outgoing.length = 8
+	outgoing.length = 8;
+	outgoing.extended = 0;
+	outgoing.priority = 0; //0-15 lower is higher priority
+	
+	//  outgoing.data.s0 = 0x07AE;
+    //    outgoing.data.byte[2] = 0x31;
+	//  outgoing.data.byte[3] = 0x05;
+	
+	outgoing.data.low = 0X07AE3105;
+	outgoing.data.high = 0x00000000;
+	Can0.sendFrame(outgoing);
+	
+	delay(100);
+}
+
+
+void sends_31_06()
+{
+	CAN_FRAME outgoing;
+	outgoing.id = 0x7E1;
+	outgoing.length = 8;
 	outgoing.extended = 0;
 	outgoing.priority = 0; //0-15 lower is higher priority
 	
@@ -53,19 +73,19 @@ void sends_E1_AE()
     //    outgoing.data.byte[2] = 0x31;
 	//  outgoing.data.byte[3] = 0x06;
 	
-	outgoing.data.low = 07AE3106
+	outgoing.data.low = 0x07AE3106;
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
 	
-	delay(100)
+	delay(100);
 }
 
 
-void sends_E1_3E()
+void sends_01_3E()
 {
 	CAN_FRAME outgoing;
 	outgoing.id = 0x7E1;
-	outgoing.length = 8
+	outgoing.length = 8;
 	outgoing.extended = 0;
 	outgoing.priority = 0; //0-15 lower is higher priority
 	
@@ -73,11 +93,11 @@ void sends_E1_3E()
     //   outgoing.data.byte[2] = 0x00;
 	//  outgoing.data.byte[3] = 0x00;
 	
-	outgoing.data.low = 013E0000
+	outgoing.data.low = 0x013E0000;
 	outgoing.data.high = 0x00000000;
 	Can0.sendFrame(outgoing);
 	
-	delay(100)
+	delay(100);
 
 }
 
@@ -85,16 +105,18 @@ void sends_E1_3E()
 void loop()
 {
   
-  sends_E0_5B();
+  sends_02_AE();
+  
+     sends_31_05();   
+     sends_31_06();
+     
+     
+  sends_01_3E();
   
   delay(1500);
   
-  
-     sends_E1_AE();   
-     sends_E1_3E();
-     
      digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
- delay(1000);                       // wait for a second
+ delay(500);                       // wait for a half second
  digitalWrite(5, LOW);    // turn the LED off by making the voltage LOW
      
      
