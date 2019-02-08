@@ -19,85 +19,85 @@ void setup()
 
 void sends_02_AE()
 {
-	CAN_FRAME outgoing;
-	
-	outgoing.id = 0x7E1;
-	outgoing.length = 8;
-	outgoing.extended = 0;
-	outgoing.priority = 0; //0-15 lower is higher priority
-	
-	//  outgoing.data.s0 = 0x02AE;  
+  CAN_FRAME outgoing;
+  
+  outgoing.id = 0x7E1;
+  outgoing.length = 8;
+  outgoing.extended = 0;
+  outgoing.priority = 0; //0-15 lower is higher priority
+  
+  //  outgoing.data.s0 = 0x02AE;  
     //  outgoing.data.byte[2] = 0x00;   
-	//   outgoing.data.byte[3] = 0x00;  
-	
-	outgoing.data.low = 0x02AE0000;
+  //   outgoing.data.byte[3] = 0x00;  
+  
+  outgoing.data.low = 0x02AE0000;
 
-	
-	outgoing.data.high = 0x00000000;
-	Can0.sendFrame(outgoing);
-	
-	delay(100);
+  
+  outgoing.data.high = 0x00000000;
+  Can0.sendFrame(outgoing);
+  
+  delay(100);
 
 }
 
 
 void sends_31_05()
 {
-	CAN_FRAME outgoing;
-	outgoing.id = 0x7E1;
-	outgoing.length = 8;
-	outgoing.extended = 0;
-	outgoing.priority = 0; //0-15 lower is higher priority
-	
-	//  outgoing.data.s0 = 0x07AE;
+  CAN_FRAME outgoing;
+  outgoing.id = 0x7E1;
+  outgoing.length = 8;
+  outgoing.extended = 0;
+  outgoing.priority = 0; //0-15 lower is higher priority
+  
+  //  outgoing.data.s0 = 0x07AE;
     //    outgoing.data.byte[2] = 0x31;
-	//  outgoing.data.byte[3] = 0x05;
-	
-	outgoing.data.low = 0X07AE3105;
-	outgoing.data.high = 0x00000000;
-	Can0.sendFrame(outgoing);
-	
-	delay(100);
+  //  outgoing.data.byte[3] = 0x05;
+  
+  outgoing.data.low = 0x07AE3105;
+  outgoing.data.high = 0x00000000;
+  Can0.sendFrame(outgoing);
+  
+  delay(100);
 }
 
 
 void sends_31_06()
 {
-	CAN_FRAME outgoing;
-	outgoing.id = 0x7E1;
-	outgoing.length = 8;
-	outgoing.extended = 0;
-	outgoing.priority = 0; //0-15 lower is higher priority
-	
-	//  outgoing.data.s0 = 0x07AE;
+  CAN_FRAME outgoing;
+  outgoing.id = 0x7E1;
+  outgoing.length = 8;
+  outgoing.extended = 0;
+  outgoing.priority = 0; //0-15 lower is higher priority
+  
+  //  outgoing.data.s0 = 0x07AE;
     //    outgoing.data.byte[2] = 0x31;
-	//  outgoing.data.byte[3] = 0x06;
-	
-	outgoing.data.low = 0x07AE3106;
-	outgoing.data.high = 0x00000000;
-	Can0.sendFrame(outgoing);
-	
-	delay(100);
+  //  outgoing.data.byte[3] = 0x06;
+  
+  outgoing.data.low = 0x07AE3106;
+  outgoing.data.high = 0x00000000;
+  Can0.sendFrame(outgoing);
+  
+  delay(100);
 }
 
 
 void sends_01_3E()
 {
-	CAN_FRAME outgoing;
-	outgoing.id = 0x7E1;
-	outgoing.length = 8;
-	outgoing.extended = 0;
-	outgoing.priority = 0; //0-15 lower is higher priority
-	
-	//  outgoing.data.s0 = 0x013E;
+  CAN_FRAME outgoing;
+  outgoing.id = 0x7E1;
+  outgoing.length = 8;
+  outgoing.extended = 0;
+  outgoing.priority = 0; //0-15 lower is higher priority
+  
+  //  outgoing.data.s0 = 0x013E;
     //   outgoing.data.byte[2] = 0x00;
-	//  outgoing.data.byte[3] = 0x00;
-	
-	outgoing.data.low = 0x013E0000;
-	outgoing.data.high = 0x00000000;
-	Can0.sendFrame(outgoing);
-	
-	delay(100);
+  //  outgoing.data.byte[3] = 0x00;
+  
+  outgoing.data.low = 0x013E0000;
+  outgoing.data.high = 0x00000000;
+  Can0.sendFrame(outgoing);
+  
+  delay(100);
 
 }
 
@@ -105,9 +105,9 @@ void sends_01_3E()
 void loop()
 {
   
-  sends_02_AE();
+  //sends_02_AE();
   
-     sends_31_05();   
+     //sends_31_05();   
      sends_31_06();
      
      
